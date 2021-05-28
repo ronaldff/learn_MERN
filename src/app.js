@@ -90,7 +90,6 @@ const getDocument = async () => {
 // getDocument();
 
 // read data using comparison operators
-
 const getDataByComparing = async () => {
   try{
 
@@ -125,4 +124,32 @@ const getDataByComparing = async () => {
   
 }
  
-getDataByComparing();
+// getDataByComparing();
+
+
+// read data using Logical Operators
+
+const getDataUsinglogicalOperators = async () => {
+  try{
+
+    // or operators
+    // const result = await Playlist.find({$or : [ {ctype : "Back End"}, {active : false} ]});
+
+    // and operators
+    // const result = await Playlist.find({$and : [ {ctype : "Back End"}, {active : false} ]});
+
+    // not operators
+    // const result = await Playlist.find({videos : { $not : {$lte : 20}}}).select({name:1,videos:1,_id:0});
+
+    // nor operators
+    const result = await Playlist.find({$nor : [{videos : 20}, {ctype : "Back End"}]}).select({name:1,videos:1,_id:0});
+
+
+    console.log(result);
+
+  } catch(err) {
+    console.log(`Error : ${err}`);
+  }
+}
+
+getDataUsinglogicalOperators();
