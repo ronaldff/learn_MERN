@@ -73,4 +73,18 @@ const schemaModelPlaylist = async () => {
   }
 }
 
-schemaModelPlaylist();
+// schemaModelPlaylist();
+
+// Read data means get document
+
+const getDocument = async () => {
+  try {
+    const result = await Playlist.find({ctype : "Back End"}).select({name:1, _id:0}).limit(1);
+    console.log(result);
+  } catch (error) {
+    console.log(error);
+  }
+ 
+}
+
+getDocument();
