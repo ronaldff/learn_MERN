@@ -62,6 +62,10 @@ const schemaModelPlaylist = async () => {
       author : "Thapa Technical"
     });
 
+    // For sing document insert
+    // const result = await javascriptData.save();
+
+    // For multiple document insert
     const result = await Playlist.insertMany([javascriptData,phpData,htmlData,pythonData]);
     console.log(result);
   } catch (error) {
