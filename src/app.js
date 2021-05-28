@@ -152,4 +152,51 @@ const getDataUsinglogicalOperators = async () => {
   }
 }
 
-getDataUsinglogicalOperators();
+// getDataUsinglogicalOperators();
+
+
+// Sorting and Counting Query Mongodb
+const getDataSortingAndCounting = async () => {
+
+  try {
+
+    // Count Query
+    // const result = await Playlist.find({ctype : "Front End"}).countDocuments();
+
+    // Sorting Query Asc
+    // const result = await Playlist.find({ctype : "Front End"}).sort({name : 1});
+
+    // Sorting Query Desc
+    // const result = await Playlist.find({ctype : "Front End"}).sort({name : -1});
+
+    const results = await Playlist.aggregate([
+      {
+        $group:
+        {
+          _id: {name : "$name"},
+          minPrice: { $min: "$videos" }
+        }
+      }
+    ]);
+
+    console.log(results);
+
+    // var newData = [];
+    // results.forEach(value => newData.push(value.minPrice));
+
+    // console.log(newData);
+
+    //   let basketballPlayers = results.filter(function (result) {
+    //     return result.minPrice > 40 ;
+    // }).map(function (result) {
+    //     return result.minPrice;
+    // })
+
+    // console.log(basketballPlayers);
+
+  } catch (err) {
+    console.log(`Error : ${err}`);
+  }
+}
+
+getDataSortingAndCounting();
