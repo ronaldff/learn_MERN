@@ -242,3 +242,32 @@ const deleteDocument = async (_id) => {
 
 }
 // deleteDocument("60b0901b1a8a9e2d4c7f7a15");
+
+
+// Mongoose Built-In Validations
+
+// const BuiltInValidationSchema = mongoose.Schema({
+//   name : {
+//     type : String,
+//     required : true,
+//     unique : true,
+//     lowercase : true,
+//     trim : true,
+//     minlength : [2, "minimum 2 letters"],
+//     maxlength : 30
+//   },
+//   ctype : {
+//     type : String,
+//     required : true,
+//     lowercase : true,
+//     enum : ["frontend", "backend", "database"]
+//   },
+//   videos : Number,
+//   author : String,
+//   active : Boolean,
+//   date : {
+//     type : Date,
+//     default : Date.now
+//   }
+// });
+
