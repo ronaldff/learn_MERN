@@ -224,4 +224,21 @@ const updateDocuments = async (_id) => {
   }
 
 }
-updateDocuments("60b0901b1a8a9e2d4c7f7a16");
+// updateDocuments("60b0901b1a8a9e2d4c7f7a16");
+
+
+// Delete Document
+const deleteDocument = async (_id) => {
+
+  try{
+    const result = await Playlist.findByIdAndDelete({_id});
+
+    console.log(result);
+  } catch(err) {
+    console.log(`Error : ${err}`);
+  }
+
+  
+
+}
+// deleteDocument("60b0901b1a8a9e2d4c7f7a15");
