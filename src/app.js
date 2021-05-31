@@ -1,12 +1,16 @@
 const mongoose = require("mongoose");
 
+
+
 // connection and creating database if not present
 mongoose.connect("mongodb://localhost:27017/playlistChannel",{
-  useNewUrlParser : true,
-  useUnifiedTopology:true
+  useNewUrlParser: true,
+  useUnifiedTopology: true
 })
 .then(() => console.log("connection successfully"))
 .catch(err => console.log(err));
+
+
 
 // define schema
 const playlistSchema = mongoose.Schema({
@@ -199,4 +203,25 @@ const getDataSortingAndCounting = async () => {
   }
 }
 
-getDataSortingAndCounting();
+// getDataSortingAndCounting();
+
+// Update documents
+const updateDocuments = async (_id) => {
+  try{
+
+    const result = await Playlist.updateOne({_id}, {
+      $set : {
+        videos : 80,
+        name : "React",
+        ctype : "Front End"
+      }
+    },{new : true, useFindAndModify : false});
+
+    console.log(result);
+
+  } catch(err) {
+    console.log(`Error : ${err}`);
+  }
+
+}
+updateDocuments("60b0901b1a8a9e2d4c7f7a16");
