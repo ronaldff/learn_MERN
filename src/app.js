@@ -1,11 +1,13 @@
 const mongoose = require("mongoose");
+const validator = require("validator");
 
 
 
 // connection and creating database if not present
 mongoose.connect("mongodb://localhost:27017/playlistChannel",{
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  useCreateIndex : true
 })
 .then(() => console.log("connection successfully"))
 .catch(err => console.log(err));
@@ -22,6 +24,16 @@ const playlistSchema = mongoose.Schema({
   videos : Number,
   active : Boolean,
   author : String,
+  email : {
+    type : String,
+    required : true,
+    unique : true,
+    validate(value){
+      if(!validator.isEmail(value)){
+        throw new Error("Email is inValid");
+      }
+    }
+  },
   created : {
     type : Date,
     default : Date.now
@@ -39,45 +51,46 @@ const schemaModelPlaylist = async () => {
       ctype : "Front End",
       videos : 150,
       active : true,
-      author : "Thapa Technical"
+      author : "Thapa Technical",
+      email : "thapa@gmail.co"
     });
 
-    const phpData = new Playlist({
-      name : "PHP",
-      ctype : "Back End",
-      videos : 250,
-      active : true,
-      author : "piyush Shyam"
-    });
+    // const phpData = new Playlist({
+    //   name : "PHP",
+    //   ctype : "Back End",
+    //   videos : 250,
+    //   active : true,
+    //   author : "piyush Shyam"
+    // });
 
-    const htmlData = new Playlist({
-      name : "HTML",
-      ctype : "Front End",
-      videos : 10,
-      active : false,
-      author : "Rohit ghodeshwar"
-    });
+    // const htmlData = new Playlist({
+    //   name : "HTML",
+    //   ctype : "Front End",
+    //   videos : 10,
+    //   active : false,
+    //   author : "Rohit ghodeshwar"
+    // });
 
-    const pythonData = new Playlist({
-      name : "Python",
-      ctype : "Backend End",
-      videos : 5,
-      active : true,
-      author : "Thapa Technical"
-    });
+    // const pythonData = new Playlist({
+    //   name : "Python",
+    //   ctype : "Backend End",
+    //   videos : 5,
+    //   active : true,
+    //   author : "Thapa Technical"
+    // });
 
     // For sing document insert
     // const result = await javascriptData.save();
 
     // For multiple document insert
-    const result = await Playlist.insertMany([javascriptData,phpData,htmlData,pythonData]);
+    const result = await Playlist.insertMany([javascriptData]);
     console.log(result);
   } catch (error) {
     console.log(error);
   }
 }
 
-// schemaModelPlaylist();
+schemaModelPlaylist();
 
 // Read data means get document
 
