@@ -1,7 +1,6 @@
 {
-  "name": "learnMongoose",
+  "name": "learnmongoose",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,6 +9,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "mongoose": "^5.12.11"
-  }
+    "mongoose": "^5.12.11",
+    "validator": "^13.6.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ronaldff/learn_MERN.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ronaldff/learn_MERN/issues"
+  },
+  "homepage": "https://github.com/ronaldff/learn_MERN#readme",
+  "description": ""
 }
